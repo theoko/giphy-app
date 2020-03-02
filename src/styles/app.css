@@ -58,6 +58,10 @@ input {
     width: 50%;
 }
 
+#mmodal {
+    padding: 0px;
+}
+
 @media only screen and (min-width: 400px) {
     .gif-list {
         -moz-column-count: 2;

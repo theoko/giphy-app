@@ -25,6 +25,7 @@ const MModal = (props) => {
     return (
         <div>
             <Modal
+                wrapClassname="mmodal"
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenMModal}
                 onRequestClose={closeMModal}

@@ -27,6 +27,7 @@ const Item = (image) => {
             </div>
             { modalIsOpen ? (
                 <Modal
+                    wrapClassname="mmodal"
                     isOpen={modalIsOpen}
                     onAfterOpen={afterOpenMModal}
                     onRequestClose={closeMModal}

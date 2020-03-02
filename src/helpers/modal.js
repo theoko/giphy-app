@@ -7,7 +7,7 @@ export function mmodalContentStyles(headerSection, header, closeBtn) {
     header.style.fontFamily = 'Marvel';
     header.style.fontSize = '32px';
     header.style.color = '#FFFFFF';
-    header.style.paddingLeft = '5px';
+    header.style.paddingLeft = '10px';
 
     closeBtn.style.padding = '32px';
     closeBtn.style.fontSize = '20px';
@@ -20,7 +20,11 @@ export function mmodalContentStyles(headerSection, header, closeBtn) {
 }
 
 export const mmodalStyles = {
-  modal: {
-      padding: '0px'
+  content: {
+      padding: '0px',
+      top: '10px',
+      bottom: '10px',
+      left: '10px',
+      right: '10px'
   }
 };
