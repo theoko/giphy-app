@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from 'react-modal';
 import Feed from "../Feed";
+import {mmodalContentStyles, mmodalStyles} from "../../helpers/modal";
 
 const MModal = (props) => {
     let headerSection;
@@ -13,17 +14,7 @@ const MModal = (props) => {
     }
 
     function afterOpenMModal() {
-        // references are now sync'd and can be accessed.
-        headerSection.style.display = 'flex';
-        headerSection.style.justifyContent = 'space-between';
-
-        header.style.color = '#EC1D24';
-        header.style.fontFamily = 'Marvel';
-        header.style.fontSize = '30px';
-
-        closeBtn.style.borderRadius = '50%';
-        closeBtn.style.padding = '25px';
-        closeBtn.style.fontSize = '20px';
+        mmodalContentStyles(headerSection, header, closeBtn);
     }
 
     function closeMModal() {
@@ -39,6 +30,7 @@ const MModal = (props) => {
                 onRequestClose={closeMModal}
                 contentLabel="Example Modal"
                 ariaHideApp={false}
+                style={mmodalStyles}
             >
 
                 <div ref={_headerSection => (headerSection = _headerSection)}>
