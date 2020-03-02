@@ -40,7 +40,8 @@ class App extends React.Component {
     }
 
     handleTermChange(term) {
-        if (term.trim() === "") this.getTrending();
+        term = term.trim();
+        if (!term || term.length === 0) this.getTrending();
         this.setState({
            loading: true
         });
