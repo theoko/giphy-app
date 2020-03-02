@@ -7,7 +7,7 @@ const Feed = (props) => {
     });
 
     return (
-        <ul>{items}</ul>
+        <div className="gif-list">{items}</div>
     );
 };
 
