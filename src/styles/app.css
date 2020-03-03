@@ -1,3 +1,8 @@
+body  {
+    background-image: url("/assets/img/marvel-pattern.png");
+    background-color: #cccccc;
+}
+
 .app {
     margin: 3em auto;
     width: 90%;
@@ -29,6 +34,17 @@
 
 .loading-header {
     padding: 4px;
+    font-family: Marvel;
+}
+
+.trending-header {
+    padding: 5px 0px 0px 5px;
+    font-family: Marvel;
+}
+
+.results-header {
+    padding: 5px 0px 0px 5px;
+    font-family: Marvel;
 }
 
 .gif-item {
@@ -63,35 +79,30 @@ input {
 }
 
 .img-item-details {
-    min-width: 500px;
+    max-width: 100%;
+    width: 800px;
 }
 
-@media only screen and (min-width: 1075px) {
+@media only screen and (max-width: 1090px) {
     .img-item-details {
-        min-width: 700px;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .img-item-details {
-        min-width: 400px;
-        max-width: 410px;
+        max-width: 100%;
+        width: 500px;
     }
     .item-details-content-links {
-        margin-top: 10px !important;
+        margin-top: 0px !important;
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 820px) {
     .item-details-content {
         display: block !important;
     }
     .img-item-details {
         max-width: 100%;
-        width: 700px;
+        width: 820px;
     }
     .item-details-content-links {
-        margin-top: 5px !important;
+        margin-top: 0px !important;
         margin-left: 10px !important;
         margin-right: 10px !important;
     }

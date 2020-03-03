@@ -13,7 +13,9 @@ class App extends React.Component {
 
         this.state = {
             gifs: [],
-            loading: false
+            loading: false,
+            term: null,
+            showingTrending: true
         };
 
         this.getTrending = this.getTrending.bind(this);
@@ -50,7 +52,9 @@ class App extends React.Component {
             console.log(res.body.data);
             this.setState({
                 gifs: res.body.data,
-                loading: false
+                loading: false,
+                term: term,
+                showingTrending: false
             });
         });
         console.log(`term: ${term}`);
@@ -60,6 +64,11 @@ class App extends React.Component {
         return (
             <div>
                 <Search onTermChange={this.handleTermChange} />
+                { this.state.showingTrending ? (
+                    <h2 className="trending-header">Trending</h2>
+                ) : (
+                    <h2 className="results-header">Results for "{this.state.term}"</h2>
+                ) }
                 <Loader loading={this.state.loading} />
                 <Feed gifs={this.state.gifs} />
             </div>

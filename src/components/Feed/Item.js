@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import {mmodalContentStyles, mmodalStyles} from "../../helpers/modal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faShareSquare, faCode} from "@fortawesome/free-solid-svg-icons";
+import Copy from "../ItemUtils/Copy";
 
 const Item = (image) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -72,15 +73,16 @@ const Item = (image) => {
     }
 
     function onCopyLinkClick() {
-
+        // image.gif.url
+        closeMModal();
     }
 
     function onMediaClick() {
-
+        //
     }
 
     function onEmbedClick() {
-
+        // image.gif.embed
     }
 
     return (
@@ -124,7 +126,7 @@ const Item = (image) => {
                         </div>
                     </div>
 
-
+                    <Copy />
                 </Modal>
             ) : null }
 
