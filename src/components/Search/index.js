@@ -2,6 +2,7 @@ import React from "react";
 import MModal from "../MModal";
 import {GIPHY_API_KEY, GIPHY_API_SEARCH} from "../../constants";
 import request from "superagent";
+import {slide as Menu} from "react-burger-menu";
 
 class Search extends React.Component {
     constructor() {

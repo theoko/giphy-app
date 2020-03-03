@@ -58,8 +58,17 @@ input {
     width: 50%;
 }
 
-#mmodal {
-    padding: 0px;
+.img-item-details {
+    min-width: 500px;
+}
+
+@media only screen and (max-width: 800px) {
+    .img-item-details {
+        min-width: 0px;
+    }
+    .item-details-content {
+        display: block;
+    }
 }
 
 @media only screen and (min-width: 400px) {
