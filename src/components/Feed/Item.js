@@ -53,19 +53,34 @@ const Item = (image) => {
 
         copyLinkSection.style.color = '#ffffff';
         copyLinkSection.style.backgroundColor = '#2A75B3';
-        copyLinkSection.style.padding = '5px';
+        copyLinkSection.style.padding = '5px 10px 5px 5px';
+        copyLinkSection.style.cursor = 'pointer';
 
         mediaSection.style.color = '#ffffff';
         mediaSection.style.backgroundColor = '#F3D403';
-        mediaSection.style.padding = '5px';
+        mediaSection.style.padding = '5px 10px 5px 5px';
+        mediaSection.style.cursor = 'pointer';
 
         embedSection.style.color = '#ffffff';
         embedSection.style.backgroundColor = '#7BC154';
-        embedSection.style.padding = '5px';
+        embedSection.style.padding = '5px 10px 5px 5px';
+        embedSection.style.cursor = 'pointer';
     }
 
     function closeMModal() {
         setIsOpen(false);
+    }
+
+    function onCopyLinkClick() {
+
+    }
+
+    function onMediaClick() {
+
+    }
+
+    function onEmbedClick() {
+
     }
 
     return (
@@ -93,16 +108,16 @@ const Item = (image) => {
                         <div ref={_contentImage => (contentImage = _contentImage)}>
                             <img className="img-item-details" src={image.gif.images.original.url} alt={image.gif.url} />
                         </div>
-                        <div ref={_contentLinks => (contentLinks = _contentLinks)}>
-                            <div ref={_copyLinkSection => (copyLinkSection = _copyLinkSection)}>
+                        <div className="item-details-content-links" ref={_contentLinks => (contentLinks = _contentLinks)}>
+                            <div ref={_copyLinkSection => (copyLinkSection = _copyLinkSection)} onClick={onCopyLinkClick}>
                                 <FontAwesomeIcon icon={faLink} style={{fontSize: '32px'}} />
                                 <span ref={_copyLinkText => (copyLinkText = _copyLinkText)}>Copy Link</span>
                             </div>
-                            <div ref={_mediaSection => (mediaSection = _mediaSection)}>
+                            <div ref={_mediaSection => (mediaSection = _mediaSection)} onClick={onMediaClick}>
                                 <FontAwesomeIcon icon={faShareSquare} style={{fontSize: '32px'}} />
                                 <span ref={_mediaText => (mediaText = _mediaText)}>Media</span>
                             </div>
-                            <div ref={_embedSection => (embedSection = _embedSection)}>
+                            <div ref={_embedSection => (embedSection = _embedSection)} onClick={onEmbedClick}>
                                 <FontAwesomeIcon icon={faCode} style={{fontSize: '32px'}} />
                                 <span ref={_embedText => (embedText = _embedText)}>Embed</span>
                             </div>

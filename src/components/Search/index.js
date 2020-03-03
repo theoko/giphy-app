@@ -62,7 +62,7 @@ class Search extends React.Component {
         return (
           <div className="search">
               <div className="m-logo" onClick={this.onModalStateChange}>
-                  M
+                  M<span className="m-logo-subtitle">GIFs</span>
               </div>
               { this.state.mmodalOpen ? (
                   <MModal
