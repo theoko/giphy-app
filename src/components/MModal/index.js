@@ -35,7 +35,7 @@ const MModal = (props) => {
             >
 
                 <div ref={_headerSection => (headerSection = _headerSection)}>
-                    <h2 ref={_header => (header = _header)}>Marvel GIFs</h2>
+                    <h2 ref={_header => (header = _header)}>MARVEL GIFs</h2>
                     <button ref={_closeBtn => closeBtn = _closeBtn} onClick={closeMModal}>X</button>
                 </div>
 
