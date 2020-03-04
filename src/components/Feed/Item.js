@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import {mmodalContentStyles, mmodalStyles} from "../../helpers/modal";
+import {mmodalContentStyles, customModalStyles} from "../../helpers/modal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faShareSquare, faCode} from "@fortawesome/free-solid-svg-icons";
 import Copy from "../ItemUtils/Copy";
@@ -96,9 +96,9 @@ const Item = (image) => {
                     isOpen={modalIsOpen}
                     onAfterOpen={afterOpenMModal}
                     onRequestClose={closeMModal}
-                    contentLabel="Example Modal"
+                    contentLabel="GIF Item Modal"
                     ariaHideApp={false}
-                    style={mmodalStyles}
+                    style={customModalStyles}
                 >
 
                     <div ref={_headerSection => (headerSection = _headerSection)}>

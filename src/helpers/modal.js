@@ -19,12 +19,24 @@ export function mmodalContentStyles(headerSection, header, closeBtn) {
     closeBtn.style.border = '0px';
 }
 
-export const mmodalStyles = {
+export const customModalStyles = {
   content: {
       padding: '0px',
       top: '10px',
       bottom: '10px',
       left: '10px',
-      right: '10px'
+      right: '10px',
+      backgroundImage: 'url("/assets/img/marvel-pattern.png")'
+  }
+};
+
+export const customFilterModalStyles = {
+  content: {
+      padding: '0px',
+      top: '0px',
+      bottom: '0px',
+      left: '0px',
+      right: '0px',
+      backgroundImage: 'url("/assets/img/marvel-pattern.png")'
   }
 };

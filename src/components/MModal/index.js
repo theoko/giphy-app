@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from 'react-modal';
 import Feed from "../Feed";
-import {mmodalContentStyles, mmodalStyles} from "../../helpers/modal";
+import {mmodalContentStyles, customModalStyles} from "../../helpers/modal";
 
 const MModal = (props) => {
     let headerSection;
@@ -25,13 +25,12 @@ const MModal = (props) => {
     return (
         <div>
             <Modal
-                wrapClassname="mmodal"
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenMModal}
                 onRequestClose={closeMModal}
-                contentLabel="Example Modal"
+                contentLabel="MModal"
                 ariaHideApp={false}
-                style={mmodalStyles}
+                style={customModalStyles}
             >
 
                 <div ref={_headerSection => (headerSection = _headerSection)}>

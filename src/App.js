@@ -36,28 +36,33 @@ class App extends React.Component {
         request.get(trendingURL, (err, res) => {
            console.log(res.body.data);
            this.setState({
-               gifs: res.body.data
+               gifs: res.body.data,
+               showingTrending: true
            });
         });
     }
 
     handleTermChange(term) {
         term = term.trim();
-        if (!term || term.length === 0) this.getTrending();
-        this.setState({
-           loading: true
-        });
-        const searchURL = `${GIPHY_API_SEARCH}?api_key=${GIPHY_API_KEY}&q=${term}&limit=25&offset=0&lang=en`;
-        request.get(searchURL, (err, res) => {
-            console.log(res.body.data);
+        if (!term || term.length === 0) {
+            this.getTrending();
+        } else {
             this.setState({
-                gifs: res.body.data,
-                loading: false,
-                term: term,
+                loading: true,
                 showingTrending: false
             });
-        });
-        console.log(`term: ${term}`);
+            const searchURL = `${GIPHY_API_SEARCH}?api_key=${GIPHY_API_KEY}&q=${term}&limit=25&offset=0&lang=en`;
+            request.get(searchURL, (err, res) => {
+                console.log(res.body.data);
+                this.setState({
+                    gifs: res.body.data,
+                    loading: false,
+                    term: term,
+                    showingTrending: false
+                });
+            });
+            console.log(`term: ${term}`);
+        }
     }
 
     render() {
