@@ -37,7 +37,7 @@ class Search extends React.Component {
 
     onInputChange(term) {
         this.setState({term});
-        this.props.onTermChange(term);
+        this.props.onTermChange(term, "ALL");
     }
 
     onBlurChange() {
@@ -72,10 +72,6 @@ class Search extends React.Component {
 
             }
         });
-    }
-
-    updateFilters() {
-
     }
 
     render() {

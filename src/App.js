@@ -17,7 +17,7 @@ class App extends React.Component {
             loading: false,
             term: null,
             showingTrending: true,
-            activeFilterIndex: 0
+            activeRatingFilter: "ALL"
         };
 
         this.getTrending = this.getTrending.bind(this);
@@ -35,42 +35,57 @@ class App extends React.Component {
     }
 
     getTrending() {
-        const trendingURL = `${GIPHY_API_TRENDING}?api_key=${GIPHY_API_KEY}`;
+        let trendingURL = `${GIPHY_API_TRENDING}?api_key=${GIPHY_API_KEY}`;
+        if (this.state.activeRatingFilter !== "ALL") {
+            trendingURL += `&rating=${this.state.activeRatingFilter}`;
+        }
         request.get(trendingURL, (err, res) => {
            console.log(res.body.data);
            this.setState({
                gifs: res.body.data,
-               showingTrending: true
+               showingTrending: true,
+               activeRatingFilter: this.state.activeRatingFilter
            });
         });
     }
 
-    handleTermChange(term) {
+    handleTermChange(term, rating) {
         term = term.trim();
         if (!term || term.length === 0) {
             this.getTrending();
         } else {
             this.setState({
                 loading: true,
-                showingTrending: false
+                showingTrending: false,
+                activeRatingFilter: this.state.activeRatingFilter
             });
-            const searchURL = `${GIPHY_API_SEARCH}?api_key=${GIPHY_API_KEY}&q=${term}&limit=25&offset=0&lang=en`;
+            let searchURL = `${GIPHY_API_SEARCH}?api_key=${GIPHY_API_KEY}&q=${term}&limit=25&offset=0&lang=en`;
+            if (rating !== "ALL") {
+                searchURL += `&rating=${this.state.activeRatingFilter}`;
+            }
             request.get(searchURL, (err, res) => {
                 console.log(res.body.data);
                 this.setState({
                     gifs: res.body.data,
                     loading: false,
                     term: term,
-                    showingTrending: false
+                    showingTrending: false,
+                    activeRatingFilter: this.state.activeRatingFilter
                 });
             });
             console.log(`term: ${term}`);
         }
     }
 
-    updateFilterState(newActiveIndex) {
+    updateFilterState(newActiveRating) {
         this.setState({
-            activeFilterIndex: newActiveIndex
+            activeRatingFilter: newActiveRating
+        }, () => {
+            if (this.state.term == null) {
+                this.getTrending();
+            } else {
+                this.handleTermChange(this.state.term, this.state.activeRatingFilter);
+            }
         });
     }
 
@@ -81,13 +96,13 @@ class App extends React.Component {
                 { this.state.showingTrending ? (
                     <div>
                         <h1 className="trending-header">Trending</h1>
-                        <FilterOptions currentIndex={this.state.activeFilterIndex} updateFilterIndex={this.updateFilterState} />
+                        <FilterOptions currentIndex={this.state.activeRatingFilter} updateFilterIndex={this.updateFilterState} />
                     </div>
                 ) : (
                     this.state.gifs.length > 0 ? (
                         <div>
                             <h1 className="results-header">Results for "{this.state.term}"</h1>
-                            <FilterOptions currentIndex={this.state.activeFilterIndex} updateFilterIndex={this.updateFilterState} />
+                            <FilterOptions currentIndex={this.state.activeRatingFilter} updateFilterIndex={this.updateFilterState} />
                         </div>
                     ) : (
                         <h1 className="results-header">No results for "{this.state.term}"</h1>
