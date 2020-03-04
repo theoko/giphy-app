@@ -69,11 +69,12 @@ class Search extends React.Component {
                       updateState={this.onModalStateChange}
                       gifs={this.state.gifs} />
               ) : null }
-              <input className="search-input"
-                     placeholder={this.state.placeholder}
-                     onFocus={this.onFocusChange}
-                     onBlur={this.onBlurChange}
-                     onChange={event => this.onInputChange(event.target.value)} />
+              <div className="search-input">
+                  <input placeholder={this.state.placeholder}
+                         onFocus={this.onFocusChange}
+                         onBlur={this.onBlurChange}
+                         onChange={event => this.onInputChange(event.target.value)} />
+              </div>
           </div>
         );
     }

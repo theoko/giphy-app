@@ -11,9 +11,13 @@ body  {
 .search {
     background-color: #EC1D24;
     display: flex;
+    justify-content: space-between;
     font-family: Marvel, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .m-logo {
@@ -27,9 +31,12 @@ body  {
 }
 
 .search-input {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    margin-right: 25%;
+    margin-left: 60%;
+    width: 100%;
+}
+
+.search-input > input {
+    width: 100%;
 }
 
 .loading-header {
@@ -74,13 +81,27 @@ input {
     font-family: Marvel, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     height: 50px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     width: 50%;
 }
 
 .img-item-details {
     max-width: 100%;
-    width: 800px;
+    width: 1300px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .img-item-details {
+        max-width: 100%;
+        width: 1100px;
+    }
+}
+
+@media only screen and (max-width: 1380px) {
+    .img-item-details {
+        max-width: 100%;
+        width: 800px;
+    }
 }
 
 @media only screen and (max-width: 1090px) {
