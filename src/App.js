@@ -6,6 +6,7 @@ import Loader from "./components/Loader";
 import Feed from "./components/Feed";
 import {GIPHY_API_KEY, GIPHY_API_SEARCH, GIPHY_API_TRENDING} from "./constants";
 import request from "superagent";
+import FilterOptions from "./components/Filter";
 
 class App extends React.Component {
     constructor() {
@@ -15,11 +16,13 @@ class App extends React.Component {
             gifs: [],
             loading: false,
             term: null,
-            showingTrending: true
+            showingTrending: true,
+            activeFilterIndex: 0
         };
 
         this.getTrending = this.getTrending.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
+        this.updateFilterState = this.updateFilterState.bind(this);
     }
 
     componentDidMount() {
@@ -65,14 +68,30 @@ class App extends React.Component {
         }
     }
 
+    updateFilterState(newActiveIndex) {
+        this.setState({
+            activeFilterIndex: newActiveIndex
+        });
+    }
+
     render() {
         return (
             <div>
                 <Search onTermChange={this.handleTermChange} />
                 { this.state.showingTrending ? (
-                    <h2 className="trending-header">Trending</h2>
+                    <div>
+                        <h1 className="trending-header">Trending</h1>
+                        <FilterOptions currentIndex={this.state.activeFilterIndex} updateFilterIndex={this.updateFilterState} />
+                    </div>
                 ) : (
-                    <h2 className="results-header">Results for "{this.state.term}"</h2>
+                    this.state.gifs.length > 0 ? (
+                        <div>
+                            <h1 className="results-header">Results for "{this.state.term}"</h1>
+                            <FilterOptions currentIndex={this.state.activeFilterIndex} updateFilterIndex={this.updateFilterState} />
+                        </div>
+                    ) : (
+                        <h1 className="results-header">No results for "{this.state.term}"</h1>
+                    )
                 ) }
                 <Loader loading={this.state.loading} />
                 <Feed gifs={this.state.gifs} />

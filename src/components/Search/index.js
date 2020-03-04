@@ -80,28 +80,30 @@ class Search extends React.Component {
 
     render() {
         return (
-          <div className="search">
-              <div className="m-logo" onClick={this.onModalStateChange}>
-                  M<span className="m-logo-subtitle">GIFs</span>
-              </div>
-              <div className="search-input">
-                  <div className="search-input-filter" onClick={this.onFilterModalStateChange}>
-                    <FontAwesomeIcon icon={faFilter} />
+          <div>
+              <div className="search">
+                  <div className="m-logo" onClick={this.onModalStateChange}>
+                      M<span className="m-logo-subtitle">GIFs</span>
                   </div>
-                  <input placeholder={this.state.placeholder}
-                         onFocus={this.onFocusChange}
-                         onBlur={this.onBlurChange}
-                         onChange={event => this.onInputChange(event.target.value)} />
+                  <div className="search-input">
+                      <div className="search-input-filter" onClick={this.onFilterModalStateChange}>
+                        <FontAwesomeIcon icon={faFilter} />
+                      </div>
+                      <input placeholder={this.state.placeholder}
+                             onFocus={this.onFocusChange}
+                             onBlur={this.onBlurChange}
+                             onChange={event => this.onInputChange(event.target.value)} />
+                  </div>
+                  { this.state.mmodalOpen ? (
+                      <MModal
+                          updateState={this.onModalStateChange}
+                          gifs={this.state.gifs} />
+                  ) : null }
+                  { this.state.filterModalOpen ? (
+                      <FilterModal
+                          updateFilterState={this.onFilterModalStateChange} />
+                  ) : null }
               </div>
-              { this.state.mmodalOpen ? (
-                  <MModal
-                      updateState={this.onModalStateChange}
-                      gifs={this.state.gifs} />
-              ) : null }
-              { this.state.filterModalOpen ? (
-                  <FilterModal
-                      updateFilterState={this.onFilterModalStateChange} />
-              ) : null }
           </div>
         );
     }
