@@ -18,9 +18,12 @@ class App extends React.Component {
             showingTrending: true,
             activeRatingFilter: "ALL",
             currentImageSizeValue: 1,
+            width: 0,
+            height: 0,
             darkMode: false,
         };
 
+        this.updateDimensions = this.updateDimensions.bind(this);
         this.setDarkMode = this.setDarkMode.bind(this);
         this.getTrending = this.getTrending.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
@@ -29,7 +32,31 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
         this.getTrending();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateDimensions);
+    }
+
+    updateDimensions() {
+        this.setState({
+            width: window.innerWidth,
+            height: window.innerHeight
+        }, () => {
+            if (this.state.width < 1100 && this.state.width >= 900) {
+                this.handleImageSizeSliderChange(2, false);
+            } else if (this.state.width < 900 && this.state.width >= 700) {
+                this.handleImageSizeSliderChange(3, false);
+            } else if (this.state.width < 700 && this.state.width >= 400) {
+                this.handleImageSizeSliderChange(4, false);
+            } else if (this.state.width < 400) {
+                this.handleImageSizeSliderChange(5, false);
+            } else {
+                this.handleImageSizeSliderChange(1, false);
+            }
+        });
     }
 
     setDarkMode(enabled) {
@@ -93,13 +120,17 @@ class App extends React.Component {
         });
     }
 
-    handleImageSizeSliderChange(event) {
-        console.log(event.target.value);
-        this.setState({
-           currentImageSizeValue: event.target.value
-        }, () => {
-
-        });
+    handleImageSizeSliderChange(sliderValue, isUserEvent) {
+        if (isUserEvent) {
+            console.log(sliderValue.target.value);
+            this.setState({
+                currentImageSizeValue: sliderValue.target.value
+            });
+        } else {
+            this.setState({
+                currentImageSizeValue: sliderValue
+            });
+        }
     }
 
     render() {
@@ -113,6 +144,8 @@ class App extends React.Component {
                             darkModeState={this.state.darkMode}
                             currentRating={this.state.activeRatingFilter}
                             updateFilterIndex={this.updateFilterState}
+                            currentWidth={this.state.width}
+                            currentHeight={this.state.height}
                             currentImageSizeValue={this.state.currentImageSizeValue}
                             updateCurrentImageSize={this.handleImageSizeSliderChange} />
                     </div>
@@ -124,6 +157,8 @@ class App extends React.Component {
                                 darkModeState={this.state.darkMode}
                                 currentRating={this.state.activeRatingFilter}
                                 updateFilterIndex={this.updateFilterState}
+                                currentWidth={this.state.width}
+                                currentHeight={this.state.height}
                                 currentImageSizeValue={this.state.currentImageSizeValue}
                                 updateCurrentImageSize={this.handleImageSizeSliderChange} />
                         </div>

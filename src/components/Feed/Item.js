@@ -1,6 +1,11 @@
 import React from "react";
 import Modal from "react-modal";
-import {mmodalContentStyles, customModalStyles} from "../../helpers/modal";
+import {
+    mmodalContentStyles,
+    customModalStyles,
+    mmodalContentDarkStyles,
+    customModalDarkStyles
+} from "../../helpers/modal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faShareSquare, faCode} from "@fortawesome/free-solid-svg-icons";
 import Copy from "../ItemUtils/Copy";
@@ -28,9 +33,16 @@ const Item = (image) => {
     }
 
     function afterOpenMModal() {
-        mmodalContentStyles(headerSection, header, closeBtn);
+        if (image.darkModeState) {
+            mmodalContentDarkStyles(headerSection, header, closeBtn);
+        } else {
+            mmodalContentStyles(headerSection, header, closeBtn);
+        }
 
         contentSection.style.display = 'flex';
+        if (image.darkModeState) {
+            contentSection.style.backgroundColor = '#121212';
+        }
 
         contentLinks.style.marginLeft = '75px';
         contentLinks.style.marginTop = '30px';
@@ -53,17 +65,17 @@ const Item = (image) => {
         embedSection.style.marginTop = '15px';
 
         copyLinkSection.style.color = '#ffffff';
-        copyLinkSection.style.backgroundColor = '#2A75B3';
+        copyLinkSection.style.backgroundColor = image.darkModeState ? '#1f1f1f' : '#2A75B3';
         copyLinkSection.style.padding = '5px 10px 5px 5px';
         copyLinkSection.style.cursor = 'pointer';
 
         mediaSection.style.color = '#ffffff';
-        mediaSection.style.backgroundColor = '#F3D403';
+        mediaSection.style.backgroundColor = image.darkModeState ? '#1f1f1f' : '#F3D403';
         mediaSection.style.padding = '5px 10px 5px 5px';
         mediaSection.style.cursor = 'pointer';
 
         embedSection.style.color = '#ffffff';
-        embedSection.style.backgroundColor = '#7BC154';
+        embedSection.style.backgroundColor = image.darkModeState ? '#1f1f1f' : '#7BC154';
         embedSection.style.padding = '5px 10px 5px 5px';
         embedSection.style.cursor = 'pointer';
     }
@@ -98,7 +110,7 @@ const Item = (image) => {
                     onRequestClose={closeMModal}
                     contentLabel="GIF Item Modal"
                     ariaHideApp={false}
-                    style={customModalStyles}
+                    style={image.darkModeState ? customModalDarkStyles : customModalStyles}
                 >
 
                     <div ref={_headerSection => (headerSection = _headerSection)}>

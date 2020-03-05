@@ -365,11 +365,29 @@ input.range-slider-dark::-webkit-slider-thumb {
     }
 }
 
+@media only screen and (max-width: 330px) {
+    .search-input {
+        margin-left: 10%;
+    }
+}
+
 @media only screen and (min-width: 400px) {
     .gif-list {
         -moz-column-count: 2;
         -webkit-column-count: 2;
         column-count: 2;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .filters {
+        display: block !important;
+    }
+    .item-size-slider {
+        margin-top: 40px;
+    }
+    .search-input {
+        margin-left: 30%;
     }
 }
 
