@@ -1,6 +1,5 @@
 import React  from 'react';
 import './styles/app.css';
-// import dotenv from "dotenv";
 import Search from "./components/Search";
 import Loader from "./components/Loader";
 import Feed from "./components/Feed";
@@ -26,11 +25,6 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // dotenv.config({
-        //     giphy_api_key: process.env.GIPHY_API_KEY
-        // });
-        // console.log(process.env.GIPHY_API_KEY);
-        // console.log(process.env);
         this.getTrending();
     }
 

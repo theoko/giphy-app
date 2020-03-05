@@ -48,6 +48,8 @@ body  {
 }
 
 .filters {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 30px;
     margin-left: 7px;
     margin-right: auto;
@@ -72,6 +74,46 @@ body  {
     color: #EC1D24;
     font-weight: bold;
     border-bottom: 3px solid #EC1D24;
+}
+
+.item-size-slider {
+    display: flex;
+    box-sizing: border-box;
+    margin: 0 0 0 0%;
+}
+
+input.range-slider {
+    width: 90%;
+    height: 10px;
+    border-radius: 5px;
+    background: #EC1D24;
+    outline: none;
+    padding: 0;
+    margin: 5px;
+    -webkit-appearance: none;
+    font-family: Marvel, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+input.range-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFCC00;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+}
+
+input.range-slider:hover::-webkit-slider-thumb {
+    background: #EC1D24;
+}
+
+input.range-slider::-moz-range-thumb {
+    background: #EC1D24;
+}
+
+input.range-slider::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px #EC1D24;
 }
 
 .loading-header {
