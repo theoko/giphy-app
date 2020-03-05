@@ -270,6 +270,62 @@ input {
     border-bottom: 3px solid #EC1D24;
 }
 
+input.range-slider-dark {
+    width: 90%;
+    height: 10px;
+    border-radius: 5px;
+    background: rgb(225, 225, 225);
+    outline: none;
+    padding: 0;
+    margin: 9px;
+    -webkit-appearance: none;
+    font-family: Marvel, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+input.range-slider-dark::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFCC00;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+}
+
+input.range-slider-dark:hover::-webkit-slider-thumb {
+    background: rgb(225, 225, 225);
+}
+
+input.range-slider-dark::-moz-range-thumb {
+    background: rgb(225, 225, 225);
+}
+
+input.range-slider-dark::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgb(225, 225, 225);
+}
+
+.loading-header-dark {
+    padding: 20px 0px 20px 0px;
+    font-family: Marvel;
+    color: rgb(225, 225, 225);
+    background-color: rgb(18, 18, 18);
+}
+
+.gif-item-dark {
+    box-shadow: 2px 2px 2px 0 #1f1f1f;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0 0 1.2em;
+    padding: .5em;
+    width: 100%;
+    cursor: pointer;
+    background: #1f1f1f;
+}
+
+.gif-item-dark img {
+    width: 100%;
+}
+
 @media only screen and (max-width: 1610px) {
     .img-item-details {
         max-width: 100%;

@@ -132,7 +132,7 @@ class App extends React.Component {
                     )
                 ) }
                 <Loader darkModeState={this.state.darkMode} loading={this.state.loading} />
-                <Feed imageSize={this.state.currentImageSizeValue} gifs={this.state.gifs} />
+                <Feed darkModeState={this.state.darkMode} imageSize={this.state.currentImageSizeValue} gifs={this.state.gifs} />
             </div>
         );
     }

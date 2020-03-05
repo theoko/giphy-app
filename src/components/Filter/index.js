@@ -86,7 +86,7 @@ const FilterOptions = (props) => {
                    data-group="r">R</a>
             </div>
             <div className="item-size-slider">
-                <input className="range-slider" value={props.currentImageSizeValue} onChange={props.updateCurrentImageSize} type="range" min="1" max="5" />
+                <input className={props.darkModeState ? "range-slider-dark" : "range-slider"} value={props.currentImageSizeValue} onChange={props.updateCurrentImageSize} type="range" min="1" max="5" />
             </div>
         </div>
     );

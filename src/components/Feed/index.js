@@ -3,7 +3,7 @@ import Item from "./Item";
 
 const Feed = (props) => {
     const items = props.gifs.map((image) => {
-        return <Item key={image.id} gif={image} />
+        return <Item darkModeState={props.darkModeState} key={image.id} gif={image} />
     });
 
     let gifListClassName;

@@ -87,7 +87,7 @@ const Item = (image) => {
 
     return (
         <div>
-            <div className="gif-item" onClick={showGifDetails}>
+            <div className={image.darkModeState ? "gif-item-dark" : "gif-item"} onClick={showGifDetails}>
                 <img src={image.gif.images.downsized.url} alt={image.gif.images.downsized.url} />
             </div>
             { modalIsOpen ? (
