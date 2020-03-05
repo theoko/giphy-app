@@ -16,12 +16,14 @@ class App extends React.Component {
             loading: false,
             term: null,
             showingTrending: true,
-            activeRatingFilter: "ALL"
+            activeRatingFilter: "ALL",
+            currentImageSizeValue: 1
         };
 
         this.getTrending = this.getTrending.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
         this.updateFilterState = this.updateFilterState.bind(this);
+        this.handleImageSizeSliderChange = this.handleImageSizeSliderChange.bind(this);
     }
 
     componentDidMount() {
@@ -83,6 +85,15 @@ class App extends React.Component {
         });
     }
 
+    handleImageSizeSliderChange(event) {
+        console.log(event.target.value);
+        this.setState({
+           currentImageSizeValue: event.target.value
+        }, () => {
+
+        });
+    }
+
     render() {
         return (
             <div>
@@ -90,13 +101,21 @@ class App extends React.Component {
                 { this.state.showingTrending ? (
                     <div>
                         <h1 className="trending-header">Trending</h1>
-                        <FilterOptions currentIndex={this.state.activeRatingFilter} updateFilterIndex={this.updateFilterState} />
+                        <FilterOptions
+                            currentRating={this.state.activeRatingFilter}
+                            updateFilterIndex={this.updateFilterState}
+                            currentImageSizeValue={this.state.currentImageSizeValue}
+                            updateCurrentImageSize={this.handleImageSizeSliderChange} />
                     </div>
                 ) : (
                     this.state.gifs.length > 0 ? (
                         <div>
                             <h1 className="results-header">Results for "{this.state.term}"</h1>
-                            <FilterOptions currentIndex={this.state.activeRatingFilter} updateFilterIndex={this.updateFilterState} />
+                            <FilterOptions
+                                currentRating={this.state.activeRatingFilter}
+                                updateFilterIndex={this.updateFilterState}
+                                currentImageSizeValue={this.state.currentImageSizeValue}
+                                updateCurrentImageSize={this.handleImageSizeSliderChange} />
                         </div>
                     ) : (
                         <h1 className="results-header">No results for "{this.state.term}"</h1>
