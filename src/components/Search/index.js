@@ -4,7 +4,6 @@ import {GIPHY_API_KEY, GIPHY_API_SEARCH} from "../../constants";
 import request from "superagent";
 import {faLightbulb} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import FilterModal from "../FilterModal";
 
 class Search extends React.Component {
     constructor() {
@@ -13,14 +12,13 @@ class Search extends React.Component {
             term: '',
             placeholder: 'Search for GIFs...',
             mmodalOpen: false,
-            filterModalOpen: false,
             gifs: []
         };
 
         this.onModalStateChange = this.onModalStateChange.bind(this);
         this.onFocusChange = this.onFocusChange.bind(this);
         this.onBlurChange = this.onBlurChange.bind(this);
-        this.onFilterModalStateChange = this.onFilterModalStateChange.bind(this);
+        this.onModeSwitchChange = this.onModeSwitchChange.bind(this);
     }
 
     onModalStateChange() {
@@ -62,26 +60,19 @@ class Search extends React.Component {
         });
     }
 
-    onFilterModalStateChange() {
-        this.setState((prevState) => ({
-            filterModalOpen: !prevState.filterModalOpen
-        }), () => {
-            console.log(`Filter Modal state updated to: ${this.state.filterModalOpen}`);
-            if (this.state.filterModalOpen) {
-
-            }
-        });
+    onModeSwitchChange() {
+        this.props.updateDarkModeState(!this.props.darkModeState);
     }
 
     render() {
         return (
           <div>
-              <div className="search">
+              <div className={this.props.darkModeState ? "search-dark" : "search"}>
                   <div className="m-logo" onClick={this.onModalStateChange}>
                       M<span className="m-logo-subtitle">GIFs</span>
                   </div>
                   <div className="search-input">
-                      <div className="search-input-filter" onClick={this.onFilterModalStateChange}>
+                      <div className="mode-switch" onClick={this.onModeSwitchChange}>
                         <FontAwesomeIcon icon={faLightbulb} />
                       </div>
                       <input placeholder={this.state.placeholder}
@@ -93,10 +84,6 @@ class Search extends React.Component {
                       <MModal
                           updateState={this.onModalStateChange}
                           gifs={this.state.gifs} />
-                  ) : null }
-                  { this.state.filterModalOpen ? (
-                      <FilterModal
-                          updateFilterState={this.onFilterModalStateChange} />
                   ) : null }
               </div>
           </div>

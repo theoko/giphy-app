@@ -1,11 +1,8 @@
-body  {
+/* LIGHT MODE */
+
+.body-light  {
     background-image: url("/assets/img/marvel-pattern.png");
     background-color: #cccccc;
-}
-
-.app {
-    margin: 3em auto;
-    width: 90%;
 }
 
 .search {
@@ -36,7 +33,7 @@ body  {
     display: flex;
 }
 
-.search-input > .search-input-filter {
+.search-input > .mode-switch {
     color: white;
     margin-top: 5px;
     padding-right: 10px;
@@ -122,15 +119,13 @@ input.range-slider::-webkit-slider-thumb {
 }
 
 .trending-header {
-    padding: 5px 0px 0px 7px;
+    padding: 75px 0px 0px 7px;
     font-family: Marvel;
-    margin-top: 75px;
 }
 
 .results-header {
-    padding: 5px 0px 0px 5px;
+    padding: 75px 0px 0px 5px;
     font-family: Marvel;
-    margin-top: 75px;
 }
 
 .gif-item {
@@ -209,6 +204,48 @@ input {
     width: 1300px;
 }
 
+/* DARK MODE */
+
+.body-dark {
+    background-image: url("/assets/img/marvel-pattern-dark.png");
+    background-color: #cccccc;
+}
+
+.search-dark {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    font-family: Marvel, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.trending-header-dark {
+    padding: 75px 0px 0px 7px;
+    font-family: Marvel;
+    color: rgb(225, 225, 225);
+}
+
+.filter-item-dark {
+    margin-right: 16px;
+    padding-bottom: 18px;
+    font-size: 20px;
+    color: rgb(225, 225, 225);
+    border-bottom: 0px solid transparent;
+    transition: all 250ms ease-out;
+    text-decoration: none;
+}
+
+.filter-item-dark.active {
+    padding-bottom: 15px;
+    color: rgb(225, 225, 225);
+    font-weight: bold;
+    border-bottom: 3px solid #EC1D24;
+}
+
 @media only screen and (max-width: 1610px) {
     .img-item-details {
         max-width: 100%;
@@ -277,11 +314,5 @@ input {
         -moz-column-count: 5;
         -webkit-column-count: 5;
         column-count: 5;
-    }
-}
-
-@media only screen and (min-width: 1280px) {
-    .app {
-        width: 1140px;
     }
 }

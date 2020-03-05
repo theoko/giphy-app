@@ -17,9 +17,11 @@ class App extends React.Component {
             term: null,
             showingTrending: true,
             activeRatingFilter: "ALL",
-            currentImageSizeValue: 1
+            currentImageSizeValue: 1,
+            darkMode: false,
         };
 
+        this.setDarkMode = this.setDarkMode.bind(this);
         this.getTrending = this.getTrending.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
         this.updateFilterState = this.updateFilterState.bind(this);
@@ -28,6 +30,12 @@ class App extends React.Component {
 
     componentDidMount() {
         this.getTrending();
+    }
+
+    setDarkMode(enabled) {
+        this.setState({
+            darkMode: enabled
+        });
     }
 
     getTrending() {
@@ -96,12 +104,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Search onTermChange={this.handleTermChange} />
+            <div className={this.state.darkMode ? "body-dark" : "body-light"}>
+                <Search darkModeState={this.state.darkMode} updateDarkModeState={this.setDarkMode} onTermChange={this.handleTermChange} />
                 { this.state.showingTrending ? (
                     <div>
-                        <h1 className="trending-header">Trending</h1>
+                        <h1 className={this.state.darkMode ? "trending-header-dark" : "trending-header"}>Trending</h1>
                         <FilterOptions
+                            darkModeState={this.state.darkMode}
                             currentRating={this.state.activeRatingFilter}
                             updateFilterIndex={this.updateFilterState}
                             currentImageSizeValue={this.state.currentImageSizeValue}
@@ -112,6 +121,7 @@ class App extends React.Component {
                         <div>
                             <h1 className="results-header">Results for "{this.state.term}"</h1>
                             <FilterOptions
+                                darkModeState={this.state.darkMode}
                                 currentRating={this.state.activeRatingFilter}
                                 updateFilterIndex={this.updateFilterState}
                                 currentImageSizeValue={this.state.currentImageSizeValue}

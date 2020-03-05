@@ -29,14 +29,3 @@ export const customModalStyles = {
       backgroundImage: 'url("/assets/img/marvel-pattern.png")'
   }
 };
-
-export const customFilterModalStyles = {
-  content: {
-      padding: '0px',
-      top: '0px',
-      bottom: '0px',
-      left: '0px',
-      right: '0px',
-      backgroundImage: 'url("/assets/img/marvel-pattern.png")'
-  }
-};
