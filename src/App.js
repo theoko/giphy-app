@@ -104,10 +104,10 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className={this.state.darkMode ? "body-dark" : "body-light"}>
+            <div className={this.state.darkMode ? (this.state.gifs.length === 0 ? "body-dark-full-height" : "body-dark") : (this.state.gifs.length === 0 ? "body-light-full-height" : "body-light")}>
                 <Search darkModeState={this.state.darkMode} updateDarkModeState={this.setDarkMode} onTermChange={this.handleTermChange} />
                 { this.state.showingTrending ? (
-                    <div>
+                    <div className={this.state.darkMode ? "header-and-filter-dark" : null}>
                         <h1 className={this.state.darkMode ? "trending-header-dark" : "trending-header"}>Trending</h1>
                         <FilterOptions
                             darkModeState={this.state.darkMode}
@@ -118,8 +118,8 @@ class App extends React.Component {
                     </div>
                 ) : (
                     this.state.gifs.length > 0 ? (
-                        <div>
-                            <h1 className="results-header">Results for "{this.state.term}"</h1>
+                        <div className={this.state.darkMode ? "header-and-filter-dark" : null}>
+                            <h1 className={this.state.darkMode ? "results-header-dark" : "results-header"}>Results for "{this.state.term}"</h1>
                             <FilterOptions
                                 darkModeState={this.state.darkMode}
                                 currentRating={this.state.activeRatingFilter}
@@ -128,10 +128,10 @@ class App extends React.Component {
                                 updateCurrentImageSize={this.handleImageSizeSliderChange} />
                         </div>
                     ) : (
-                        <h1 className="results-header">No results for "{this.state.term}"</h1>
+                        <h1 className={this.state.darkMode ? "results-header-dark" : "results-header"}>No results for "{this.state.term}"</h1>
                     )
                 ) }
-                <Loader loading={this.state.loading} />
+                <Loader darkModeState={this.state.darkMode} loading={this.state.loading} />
                 <Feed imageSize={this.state.currentImageSizeValue} gifs={this.state.gifs} />
             </div>
         );

@@ -5,6 +5,12 @@
     background-color: #cccccc;
 }
 
+.body-light-full-height {
+    background-image: url("/assets/img/marvel-pattern.png");
+    background-color: #cccccc;
+    height: calc(100vh);
+}
+
 .search {
     background-color: #EC1D24;
     display: flex;
@@ -209,6 +215,24 @@ input {
 .body-dark {
     background-image: url("/assets/img/marvel-pattern-dark.png");
     background-color: #cccccc;
+}
+
+.body-dark-full-height {
+    background-image: url("/assets/img/marvel-pattern-dark.png");
+    background-color: #cccccc;
+    height: calc(100vh);
+}
+
+.header-and-filter-dark {
+    background-color: rgb(18, 18 , 18);
+    padding-bottom: 10px;
+}
+
+.results-header-dark {
+    padding: 75px 0px 40px 5px;
+    font-family: Marvel;
+    color: rgb(225, 225, 225);
+    background: rgb(18, 18, 18);
 }
 
 .search-dark {
