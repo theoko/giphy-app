@@ -1,7 +1,12 @@
 import React from "react";
 import Modal from 'react-modal';
 import Feed from "../Feed";
-import {mmodalContentStyles, customModalStyles} from "../../helpers/modal";
+import {
+    mmodalContentStyles,
+    customModalStyles,
+    mmodalContentDarkStyles,
+    customModalDarkStyles
+} from "../../helpers/modal";
 
 const MModal = (props) => {
     let headerSection;
@@ -9,12 +14,12 @@ const MModal = (props) => {
     let closeBtn;
     const [modalIsOpen, setIsOpen] = React.useState(true);
 
-    function openMModal() {
-        setIsOpen(true);
-    }
-
     function afterOpenMModal() {
-        mmodalContentStyles(headerSection, header, closeBtn);
+        if (props.darkModeState) {
+            mmodalContentDarkStyles(headerSection, header, closeBtn)
+        } else {
+            mmodalContentStyles(headerSection, header, closeBtn);
+        }
     }
 
     function closeMModal() {
@@ -30,7 +35,7 @@ const MModal = (props) => {
                 onRequestClose={closeMModal}
                 contentLabel="MModal"
                 ariaHideApp={false}
-                style={customModalStyles}
+                style={props.darkModeState ? customModalDarkStyles : customModalStyles}
             >
 
                 <div ref={_headerSection => (headerSection = _headerSection)}>
@@ -38,7 +43,7 @@ const MModal = (props) => {
                     <button ref={_closeBtn => closeBtn = _closeBtn} onClick={closeMModal}>X</button>
                 </div>
 
-                <Feed gifs={props.gifs} />
+                <Feed darkModeState={props.darkModeState} gifs={props.gifs} />
             </Modal>
         </div>
     );

@@ -9,6 +9,7 @@ import {
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faShareSquare, faCode} from "@fortawesome/free-solid-svg-icons";
 import Copy from "../ItemUtils/Copy";
+import {CopyToClipboard} from "react-copy-to-clipboard";
 
 const Item = (image) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -17,7 +18,6 @@ const Item = (image) => {
     let closeBtn;
 
     let contentSection;
-    let contentImage;
     let contentLinks;
 
     let copyLinkSection;
@@ -85,17 +85,18 @@ const Item = (image) => {
     }
 
     function onCopyLinkClick() {
-        // image.gif.url
         closeMModal();
     }
 
     function onMediaClick() {
-        //
+        closeMModal();
     }
 
     function onEmbedClick() {
-        // image.gif.embed
+        closeMModal();
     }
+
+    let embedContentToCopy = `<iframe src="https://giphy.com/embed/${image.gif.id}" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="${image.gif.url}">via GIPHY</a></p>`;
 
     return (
         <div>
@@ -119,22 +120,28 @@ const Item = (image) => {
                     </div>
 
                     <div className="item-details-content" ref={_contentSection => (contentSection = _contentSection)}>
-                        <div ref={_contentImage => (contentImage = _contentImage)}>
+                        <div>
                             <img className="img-item-details" src={image.gif.images.original.url} alt={image.gif.url} />
                         </div>
                         <div className="item-details-content-links" ref={_contentLinks => (contentLinks = _contentLinks)}>
-                            <div ref={_copyLinkSection => (copyLinkSection = _copyLinkSection)} onClick={onCopyLinkClick}>
-                                <FontAwesomeIcon icon={faLink} style={{fontSize: '32px'}} />
-                                <span ref={_copyLinkText => (copyLinkText = _copyLinkText)}>Copy Link</span>
-                            </div>
-                            <div ref={_mediaSection => (mediaSection = _mediaSection)} onClick={onMediaClick}>
-                                <FontAwesomeIcon icon={faShareSquare} style={{fontSize: '32px'}} />
-                                <span ref={_mediaText => (mediaText = _mediaText)}>Media</span>
-                            </div>
-                            <div ref={_embedSection => (embedSection = _embedSection)} onClick={onEmbedClick}>
-                                <FontAwesomeIcon icon={faCode} style={{fontSize: '32px'}} />
-                                <span ref={_embedText => (embedText = _embedText)}>Embed</span>
-                            </div>
+                            <CopyToClipboard text={image.gif.url}>
+                                <div ref={_copyLinkSection => (copyLinkSection = _copyLinkSection)} onClick={onCopyLinkClick}>
+                                    <FontAwesomeIcon icon={faLink} style={{fontSize: '32px'}} />
+                                    <span ref={_copyLinkText => (copyLinkText = _copyLinkText)}>Copy Link</span>
+                                </div>
+                            </CopyToClipboard>
+                            <CopyToClipboard text={image.gif.images.original.url}>
+                                <div ref={_mediaSection => (mediaSection = _mediaSection)} onClick={onMediaClick}>
+                                    <FontAwesomeIcon icon={faShareSquare} style={{fontSize: '32px'}} />
+                                    <span ref={_mediaText => (mediaText = _mediaText)}>Media</span>
+                                </div>
+                            </CopyToClipboard>
+                            <CopyToClipboard text={embedContentToCopy}>
+                                <div ref={_embedSection => (embedSection = _embedSection)} onClick={onEmbedClick}>
+                                    <FontAwesomeIcon icon={faCode} style={{fontSize: '32px'}} />
+                                    <span ref={_embedText => (embedText = _embedText)}>Embed</span>
+                                </div>
+                            </CopyToClipboard>
                         </div>
                     </div>
 

@@ -82,6 +82,7 @@ class Search extends React.Component {
                   </div>
                   { this.state.mmodalOpen ? (
                       <MModal
+                          darkModeState={this.props.darkModeState}
                           updateState={this.onModalStateChange}
                           gifs={this.state.gifs} />
                   ) : null }
