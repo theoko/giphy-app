@@ -2,8 +2,7 @@ import React from "react";
 import MModal from "../MModal";
 import {GIPHY_API_KEY, GIPHY_API_SEARCH} from "../../constants";
 import request from "superagent";
-import {slide as Menu} from "react-burger-menu";
-import {faFilter} from "@fortawesome/free-solid-svg-icons";
+import {faLightbulb} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import FilterModal from "../FilterModal";
 
@@ -83,7 +82,7 @@ class Search extends React.Component {
                   </div>
                   <div className="search-input">
                       <div className="search-input-filter" onClick={this.onFilterModalStateChange}>
-                        <FontAwesomeIcon icon={faFilter} />
+                        <FontAwesomeIcon icon={faLightbulb} />
                       </div>
                       <input placeholder={this.state.placeholder}
                              onFocus={this.onFocusChange}

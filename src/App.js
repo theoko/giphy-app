@@ -122,7 +122,7 @@ class App extends React.Component {
                     )
                 ) }
                 <Loader loading={this.state.loading} />
-                <Feed gifs={this.state.gifs} />
+                <Feed imageSize={this.state.currentImageSizeValue} gifs={this.state.gifs} />
             </div>
         );
     }
