@@ -1,7 +1,7 @@
 ## Setup 
 
 #### If you don't have yarn installed, download and install it from [https://classic.yarnpkg.com/en/docs/install/](https://classic.yarnpkg.com/en/docs/install/)
-#### In order to set up the project, run `yarn install`
+#### In order to set up the project, cd into the directory named `giphy-app` and run `yarn install`
 
 ## Run
 
