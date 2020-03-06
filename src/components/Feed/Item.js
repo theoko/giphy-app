@@ -8,7 +8,6 @@ import {
 } from "../../helpers/modal";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faShareSquare, faCode} from "@fortawesome/free-solid-svg-icons";
-import Copy from "../ItemUtils/Copy";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 
 const Item = (image) => {
@@ -144,8 +143,6 @@ const Item = (image) => {
                             </CopyToClipboard>
                         </div>
                     </div>
-
-                    <Copy />
                 </Modal>
             ) : null }
 
