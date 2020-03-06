@@ -6,11 +6,20 @@
 ## Run
 
 #### In order to start a local server, run `yarn start`
+
 This will run the app in development mode. Your default browser will automatically 
 go to [http://localhost:3000](http://localhost:3000) <br />
 
 If edits are made, the page will automatically reload and the components will be re-rendered.
 
+## Additional Info On App Features
+
+* Clicking on `MGIFs` on top will bring up a modal with Marvel GIFs
+* Clicking on the light bulb on the left of the search bar will switch the app to dark mode
+* When searching for GIFs, you can get back to Trending by deleting the term
+* You can choose rating for the GIFs by clicking on `All Ratings`, `G`, `PG`, `PG-13` and `R`
+* You can change the number of GIFs displayed per-column by adjusting the slider on the right
+    * Note: the slider will automatically adjust based on the current screen width 
 
 ### Other Available Scripts (this section is copied from create-react-app)
 
