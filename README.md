@@ -10,8 +10,6 @@
 This will run the app in development mode. Your default browser will automatically 
 go to [http://localhost:3000](http://localhost:3000) <br />
 
-If edits are made, the page will automatically reload and the components will be re-rendered.
-
 ## Additional Info On App Features
 
 * Clicking on `MGIFs` on top will bring up a modal with Marvel GIFs
