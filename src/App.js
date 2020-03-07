@@ -75,7 +75,8 @@ class App extends React.Component {
            this.setState({
                gifs: res.body.data,
                showingTrending: true,
-               activeRatingFilter: this.state.activeRatingFilter
+               activeRatingFilter: this.state.activeRatingFilter,
+               term: null
            });
         });
     }
